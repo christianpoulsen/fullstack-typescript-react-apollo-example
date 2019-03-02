@@ -1,0 +1,30 @@
+{
+  "name": "typescript-apollo-server-example",
+  "version": "1.0.0",
+  "description": "A TypeScript Apollo Server example",
+  "author": "Christian Poulsen",
+  "license": "ISC",
+  "scripts": {
+    "start": "npm run serve",
+    "build": "npm run build-ts && npm run tslint",
+    "build-ts": "tsc",
+    "tslint": "tslint -c tslint.json 'src/**/*.ts'",
+    "serve": "node build/server.js",
+    "dev": "npm run build-ts && npm run serve"
+  },
+  "dependencies": {
+    "apollo-datasource": "^0.3.1",
+    "apollo-server": "^2.4.8",
+    "graphql": "^14.1.1",
+    "mysql2": "^1.6.5",
+    "sequelize": "^4.42.1"
+  },
+  "devDependencies": {
+    "@types/sequelize": "^4.27.38",
+    "@types/graphql": "^14.0.7",
+    "@types/node": "^11.9.6",
+    "ts-node": "^8.0.2",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
+  }
+}
