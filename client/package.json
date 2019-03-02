@@ -11,7 +11,10 @@
     "tslint": "tslint -c tslint.json 'src/**/*.ts'"
   },
   "dependencies": {
+    "antd": "^3.13.6",
+    "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
+    "apollo-link-http": "^1.5.11",
     "graphql": "^14.1.1",
     "graphql-tag": "^2.10.1",
     "node": "^10.15.2",
