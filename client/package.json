@@ -1,0 +1,36 @@
+{
+  "name": "fullstack-typescript-react-apollo-client-example",
+  "version": "1.0.0",
+  "description": "A TypeScript React Apollo Client example",
+  "author": "Christian Poulsen",
+  "license": "ISC",
+  "scripts": {
+    "start": "npm run build-ts && react-scripts start",
+    "build": "npm run build-ts && react-scripts build",
+    "build-ts": "tsc",
+    "tslint": "tslint -c tslint.json 'src/**/*.ts'"
+  },
+  "dependencies": {
+    "apollo-client": "^2.5.1",
+    "graphql": "^14.1.1",
+    "graphql-tag": "^2.10.1",
+    "node": "^10.15.2",
+    "react": "^16.8.3",
+    "react-apollo": "^2.5.1",
+    "react-dom": "^16.8.3",
+    "react-scripts": "^2.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "^11.10.4",
+    "@types/react": "^16.8.6",
+    "@types/react-dom": "^16.8.2",
+    "tslint": "^5.13.1",
+    "typescript": "^3.3.3333"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

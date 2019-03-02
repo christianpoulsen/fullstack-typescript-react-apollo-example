@@ -1,7 +1,7 @@
 {
-  "name": "typescript-apollo-server-example",
+  "name": "fullstack-typescript-react-apollo-server-example",
   "version": "1.0.0",
-  "description": "A TypeScript Apollo Server example",
+  "description": "A TypeScript Node Apollo Server example",
   "author": "Christian Poulsen",
   "license": "ISC",
   "scripts": {
