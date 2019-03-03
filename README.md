@@ -2,7 +2,17 @@
 
 The client and the server should be run separately.
 
-Start by ensuring both have the necessary packages installed to run the application.
+The server connects to a MySQL database hosted by AWS's RDS service. So before you can connect, you need to set the needed environment variables:
+
+<code>RDS_HOSTNAME</code>
+
+<code>RDS_USERNAME</code>
+
+<code>RDS_PASSWORD</code>
+
+<code>RDS_PORT</code>
+
+Ensure both client and server have the necessary packages installed to run the application.
 Go inside each folder and run:
 
 <code>npm install</code>
