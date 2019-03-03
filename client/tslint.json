@@ -22,7 +22,8 @@
               ],
               "alphabetize": false
             }
-          ]
+          ],
+          "max-line-length": false
     },
     "rulesDirectory": []
 }
