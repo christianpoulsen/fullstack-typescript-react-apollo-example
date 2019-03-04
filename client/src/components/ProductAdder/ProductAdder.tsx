@@ -1,27 +1,13 @@
 import { Button, Form, Input } from "antd";
-import gql from "graphql-tag";
 import React, { Component } from "react";
 import { Mutation, MutationFn } from "react-apollo";
+
+import { ADD_PRODUCT } from "../../graphql/mutations";
+import { GET_PRODUCTS } from "../../graphql/queries";
 
 import "antd/lib/button/style/css";
 import "antd/lib/form/style/css";
 import "antd/lib/input/style/css";
-
-const ADD_PRODUCT = gql`
-  mutation addNewProduct($name: String!, $price: Float!, $quantity: Int) {
-    addProduct(name: $name, price: $price, quantity: $quantity) {
-        success
-        message
-        product {
-            id
-            name
-            price
-            quantity
-        }
-    }
-  }
-`
-    ;
 
 const hasErrors = (fieldsError: any) => {
     return Object.keys(fieldsError).some((field: any) => fieldsError[field]);
@@ -71,7 +57,17 @@ class ProductAdderForm extends Component<Properties, State> {
         const { getFieldDecorator, getFieldsError } = this.props.form;
 
         return (
-            <Mutation mutation={ADD_PRODUCT}>
+            <Mutation
+                mutation={ADD_PRODUCT}
+                update={(cache, { data: { addProduct: { product } }}) => {
+                    const { products }: [] | any = cache.readQuery({ query: GET_PRODUCTS });
+                    cache.writeQuery({
+                      query: GET_PRODUCTS,
+                      data: { catalogue: products.concat([product]) },
+                    });
+                  }}
+                refetchQueries={[{ query: GET_PRODUCTS }]} // So that Catalogue Card updates itself
+            >
                 {(addNewProduct, { loading, error }) => {
                     if (loading) {
                         return <p>LOADING</p>;
@@ -81,7 +77,7 @@ class ProductAdderForm extends Component<Properties, State> {
                         return <p>ERROR</p>;
                     }
                     return (
-                        <Form layout="inline" onSubmit={(e: any) => { this.handleSubmit(addNewProduct), e.preventDefault() }}>
+                        <Form layout="inline" onSubmit={(e) => { this.handleSubmit(addNewProduct), e.preventDefault(); }}>
                             <Form.Item
                                 validateStatus={this.state.nameError ? "error" : ""}
                                 help={this.state.nameError || ""}
@@ -97,7 +93,7 @@ class ProductAdderForm extends Component<Properties, State> {
                                 help={this.state.priceError || ""}
                             >
                                 {getFieldDecorator("price", {
-                                    rules: [{ required: true, message: "Please input a price!", pattern: "/d+/" }],
+                                    rules: [{ required: true, message: "Please input a price!", pattern: /^\d+$/ }],
                                 })(
                                     <Input placeholder="Price" />
                                 )}

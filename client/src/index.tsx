@@ -18,6 +18,12 @@ const client = new ApolloClient({
     link,
 });
 
+cache.writeData({
+    data: {
+        productItems: [],
+    },
+});
+
 ReactDOM.render(
     <ApolloProvider client={client}>
         <App />
