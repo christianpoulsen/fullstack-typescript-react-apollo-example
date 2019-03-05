@@ -44,7 +44,7 @@ class ProductAdderForm extends Component<Properties, State> {
     }
 
     private handleSubmit = (addProduct: MutationFn) => {
-        this.props.form.validateFields((err: any, values: any) => {
+        this.props.form.validateFields((err, values) => {
             if (!err) {
                 values.price = Number(values.price.replace(/,/g, "."));
                 values.quantity = Number(values.quantity);

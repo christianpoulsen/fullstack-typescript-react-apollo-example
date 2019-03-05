@@ -40,7 +40,7 @@ class ProductAPI extends DataSource implements ProductAPIInterface {
     }
 
     public getAllProducts = () => {
-        return new Promise((resolve: any, reject: any) => {
+        return new Promise((resolve, reject) => {
             console.log("API products");
             this.store.products.findAll().then((res: any) => {
                 const products = res.map((product: any) => product.dataValues)
@@ -57,7 +57,7 @@ class ProductAPI extends DataSource implements ProductAPIInterface {
     }
 
     public getProductById = (id: number) => {
-        return new Promise((resolve: any, reject: any) => {
+        return new Promise((resolve, reject) => {
             console.log("API product", id);
             this.store.products.findOne({ where: { id } }).then((res: any) => {
                 let product = null;

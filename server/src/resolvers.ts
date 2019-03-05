@@ -13,8 +13,8 @@ fieldName: (parent, args, context, info) => data
 
 const Query = {
 
-    product: (_: any, { id }: { id: number }, { dataSources }: { dataSources: any }) => {
-        return new Promise((resolve: any, reject: any) => {
+    product: (_: undefined, { id }: { id: number }, { dataSources  }: any) => {
+        return new Promise((resolve, reject) => {
             console.log("Query product", id);
             dataSources.productAPI.getProductById(id).then((res: any) => {
                 const product = res;
@@ -30,7 +30,7 @@ const Query = {
     },
 
     products: (_: any, __: any, { dataSources }: { dataSources: any }) => {
-        return new Promise((resolve: any, reject: any) => {
+        return new Promise((resolve, reject) => {
             console.log("Query products");
             dataSources.productAPI.getAllProducts().then((res: any) => {
                 const products = res;
@@ -47,8 +47,8 @@ const Query = {
 };
 
 const Mutation = {
-    addProduct: (_: any, productArgs: any, { dataSources }: { dataSources: any }) => {
-        return new Promise((resolve: any, reject: any) => {
+    addProduct: (_: any, productArgs: any, { dataSources }: any) => {
+        return new Promise((resolve, reject) => {
             let result: any = {
                 success: false,
                 message: "There already exist a product with that name",
