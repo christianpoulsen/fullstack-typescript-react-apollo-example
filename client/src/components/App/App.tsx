@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import "./App.css";
-import CatalogueCard from "./components/CatalogueCard/CatalogueCard";
-import ProductAdder from "./components/ProductAdder/ProductAdder";
+import CatalogueCard from "../CatalogueCard/CatalogueCard";
+import ProductAdder from "../ProductAdder/ProductAdder";
 
 const logo = require("./logo.svg");
 

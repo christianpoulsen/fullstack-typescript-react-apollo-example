@@ -1,4 +1,5 @@
 import { Button, Form, Input } from "antd";
+import { WrappedFormUtils } from "antd/lib/form/Form";
 import React, { Component } from "react";
 import { Mutation, MutationFn } from "react-apollo";
 
@@ -9,18 +10,18 @@ import "antd/lib/button/style/css";
 import "antd/lib/form/style/css";
 import "antd/lib/input/style/css";
 
-const hasErrors = (fieldsError: any) => {
-    return Object.keys(fieldsError).some((field: any) => fieldsError[field]);
+const hasErrors = (fieldsError: any): boolean => {
+    return Object.keys(fieldsError).some((field: string) => fieldsError[field]);
 };
 
 interface Properties {
-    form: any;
+    form: WrappedFormUtils;
 }
 
 interface State {
-    nameError: boolean;
-    priceError: boolean;
-    quantityError: boolean;
+    nameError: boolean | Object[];
+    priceError: boolean | Object[];
+    quantityError: boolean | Object[];
 }
 
 class ProductAdderForm extends Component<Properties, State> {
@@ -60,7 +61,7 @@ class ProductAdderForm extends Component<Properties, State> {
             <Mutation
                 mutation={ADD_PRODUCT}
                 update={(cache, { data: { addProduct: { product } }}) => {
-                    const { products }: [] | any = cache.readQuery({ query: GET_PRODUCTS });
+                    const { products }: any = cache.readQuery({ query: GET_PRODUCTS });
                     cache.writeQuery({
                       query: GET_PRODUCTS,
                       data: { catalogue: products.concat([product]) },

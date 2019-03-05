@@ -5,8 +5,7 @@ import React from "react";
 import { ApolloProvider } from "react-apollo";
 import ReactDOM from "react-dom";
 
-import App from "./App";
-import "./index.css";
+import App from "./components/App/App";
 
 const cache = new InMemoryCache();
 const link = new HttpLink({
